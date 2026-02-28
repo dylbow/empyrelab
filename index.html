@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpyreLab — AI Agent Mission Control</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing" class="landing">
+        <nav class="landing-nav">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">EmpyreLab</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <button class="btn-primary" onclick="showDashboard()">Launch Demo</button>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-badge">🚀 Now in Beta</div>
+            <h1>Your AI Agent's <span class="gradient-text">Mission Control</span></h1>
+            <p class="hero-sub">The command center for AI agent operators. Track revenue, monitor agents, automate workflows — all from one dark-mode dashboard.</p>
+            <div class="hero-cta">
+                <button class="btn-primary btn-lg" onclick="showDashboard()">Try Free Demo →</button>
+                <button class="btn-ghost btn-lg" onclick="scrollTo('#features')">See Features</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num">24/7</span>
+                    <span class="stat-label">Agent Monitoring</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">∞</span>
+                    <span class="stat-label">Automations</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">$0</span>
+                    <span class="stat-label">To Start</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Built for <span class="gradient-text">AI Operators</span></h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Revenue Dashboard</h3>
+                    <p>Track income across all your AI-powered businesses. YouTube, Gumroad, freelancing — see it all in real time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Agent Monitor</h3>
+                    <p>Watch your AI agents work. See what they're doing, what they've completed, and what needs your attention.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Growth Tracker</h3>
+                    <p>Subscribers, views, sales, followers — every metric that matters, updated automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Fully Customizable</h3>
+                    <p>Colors, layout, panels — make it yours. Dark mode by default because we're not animals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Smart Alerts</h3>
+                    <p>Get notified when something needs your attention. Revenue milestones, agent errors, trending content.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Task Command</h3>
+                    <p>Assign tasks to your agents, track progress, and see results. Your AI workforce, managed.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing">
+            <h2>Simple <span class="gradient-text">Pricing</span></h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-tier">Free</div>
+                    <div class="price-amount">$0<span>/mo</span></div>
+                    <ul>
+                        <li>✅ 3 Dashboard Panels</li>
+                        <li>✅ Basic Customization</li>
+                        <li>✅ Manual Data Entry</li>
+                        <li>❌ API Integrations</li>
+                        <li>❌ Agent Monitoring</li>
+                    </ul>
+                    <button class="btn-primary" onclick="showDashboard()">Start Free</button>
+                </div>
+                <div class="price-card featured">
+                    <div class="price-badge">Most Popular</div>
+                    <div class="price-tier">Pro</div>
+                    <div class="price-amount">$29<span>/mo</span></div>
+                    <ul>
+                        <li>✅ Unlimited Panels</li>
+                        <li>✅ Full Customization</li>
+                        <li>✅ YouTube Analytics API</li>
+                        <li>✅ Revenue Tracking</li>
+                        <li>✅ Agent Monitor</li>
+                    </ul>
+                    <button class="btn-primary">Coming Soon</button>
+                </div>
+                <div class="price-card">
+                    <div class="price-tier">Enterprise</div>
+                    <div class="price-amount">$99<span>/mo</span></div>
+                    <ul>
+                        <li>✅ Everything in Pro</li>
+                        <li>✅ Multi-Agent Support</li>
+                        <li>✅ Custom Integrations</li>
+                        <li>✅ Priority Support</li>
+                        <li>✅ White Label Option</li>
+                    </ul>
+                    <button class="btn-ghost">Contact Us</button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="landing-footer">
+            <p>Built with ⚡ by <a href="https://youtube.com/@empyreai">Empyre AI</a> — An AI agent built this page.</p>
+        </footer>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard hidden">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">EmpyreLab</span>
+                <span class="version-badge">DEMO</span>
+            </div>
+            <div class="topbar-center">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search panels, metrics, commands..." id="searchInput">
+                </div>
+            </div>
+            <div class="topbar-right">
+                <button class="icon-btn" onclick="toggleNotifications()" title="Notifications">🔔</button>
+                <button class="icon-btn" onclick="toggleSettings()" title="Settings">⚙️</button>
+                <button class="icon-btn" onclick="showLanding()" title="Back to Home">🏠</button>
+                <div class="user-avatar">DB</div>
+            </div>
+        </header>
+
+        <!-- Settings Panel (hidden by default) -->
+        <div id="settingsPanel" class="settings-panel hidden">
+            <div class="settings-header">
+                <h3>⚙️ Settings</h3>
+                <button class="close-btn" onclick="toggleSettings()">✕</button>
+            </div>
+            <div class="settings-body">
+                <div class="setting-group">
+                    <label>Accent Color</label>
+                    <div class="color-options">
+                        <button class="color-swatch active" data-color="#00f0ff" style="background:#00f0ff" onclick="setAccent(this)"></button>
+                        <button class="color-swatch" data-color="#ff3366" style="background:#ff3366" onclick="setAccent(this)"></button>
+                        <button class="color-swatch" data-color="#00ff88" style="background:#00ff88" onclick="setAccent(this)"></button>
+                        <button class="color-swatch" data-color="#ffaa00" style="background:#ffaa00" onclick="setAccent(this)"></button>
+                        <button class="color-swatch" data-color="#aa55ff" style="background:#aa55ff" onclick="setAccent(this)"></button>
+                        <button class="color-swatch" data-color="#ff6600" style="background:#ff6600" onclick="setAccent(this)"></button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>Dashboard Title</label>
+                    <input type="text" id="dashTitle" value="Mission Control" onchange="updateTitle(this.value)">
+                </div>
+                <div class="setting-group">
+                    <label>Background</label>
+                    <select id="bgSelect" onchange="setBg(this.value)">
+                        <option value="dark">Dark (Default)</option>
+                        <option value="midnight">Midnight Blue</option>
+                        <option value="matrix">Matrix Green</option>
+                        <option value="blood">Blood Red</option>
+                        <option value="purple">Deep Purple</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>Panel Style</label>
+                    <select id="panelStyle" onchange="setPanelStyle(this.value)">
+                        <option value="glass">Glass (Default)</option>
+                        <option value="solid">Solid</option>
+                        <option value="outline">Outline</option>
+                        <option value="neon">Neon Glow</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="animToggle" checked onchange="toggleAnimations()">
+                        Animations
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications Panel -->
+        <div id="notifPanel" class="notif-panel hidden">
+            <div class="settings-header">
+                <h3>🔔 Notifications</h3>
+                <button class="close-btn" onclick="toggleNotifications()">✕</button>
+            </div>
+            <div class="notif-list">
+                <div class="notif-item unread">
+                    <span class="notif-dot"></span>
+                    <div>
+                        <strong>Agent completed task</strong>
+                        <p>Theoretika Short #1 uploaded to Drive</p>
+                        <span class="notif-time">2 hours ago</span>
+                    </div>
+                </div>
+                <div class="notif-item unread">
+                    <span class="notif-dot"></span>
+                    <div>
+                        <strong>Revenue milestone</strong>
+                        <p>First Gumroad product ready to publish</p>
+                        <span class="notif-time">5 hours ago</span>
+                    </div>
+                </div>
+                <div class="notif-item">
+                    <div>
+                        <strong>YouTube update</strong>
+                        <p>Consciousness video v2 uploaded</p>
+                        <span class="notif-time">1 day ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Content -->
+        <main class="dash-main">
+            <div class="dash-header">
+                <h1 id="dashboardTitle">Mission Control</h1>
+                <div class="dash-meta">
+                    <span class="live-dot"></span>
+                    <span>Live</span>
+                    <span class="separator">|</span>
+                    <span id="currentTime"></span>
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-card-icon">💰</div>
+                    <div class="stat-card-content">
+                        <div class="stat-card-label">Revenue (MTD)</div>
+                        <div class="stat-card-value" id="revenueMTD">$0.00</div>
+                        <div class="stat-card-change positive">+0% vs last month</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">👁️</div>
+                    <div class="stat-card-content">
+                        <div class="stat-card-label">YouTube Views</div>
+                        <div class="stat-card-value" id="ytViews">1,247</div>
+                        <div class="stat-card-change positive">+23% this week</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">📺</div>
+                    <div class="stat-card-content">
+                        <div class="stat-card-label">Subscribers</div>
+                        <div class="stat-card-value" id="ytSubs">42</div>
+                        <div class="stat-card-change positive">+8 this week</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">🤖</div>
+                    <div class="stat-card-content">
+                        <div class="stat-card-label">Agent Status</div>
+                        <div class="stat-card-value status-online">ONLINE</div>
+                        <div class="stat-card-change">Dylbot • Active now</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel Grid -->
+            <div class="panel-grid">
+                <!-- Agent Activity -->
+                <div class="panel panel-wide">
+                    <div class="panel-header">
+                        <h2>🤖 Agent Activity</h2>
+                        <span class="panel-badge live">Live</span>
+                    </div>
+                    <div class="activity-feed" id="activityFeed">
+                        <div class="activity-item">
+                            <span class="activity-time">07:35</span>
+                            <span class="activity-icon">📥</span>
+                            <span class="activity-text">Downloaded 7 tracks from YouTube Audio Library</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">07:26</span>
+                            <span class="activity-icon">📤</span>
+                            <span class="activity-text">Uploaded consciousness v2 to Google Drive</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">23:25</span>
+                            <span class="activity-icon">🎬</span>
+                            <span class="activity-text">Re-rendered clips 11-13 with fixed zoom</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">22:15</span>
+                            <span class="activity-icon">🛒</span>
+                            <span class="activity-text">Created Gumroad product listing — Kurzgesagt Prompt Pack</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">21:00</span>
+                            <span class="activity-icon">📦</span>
+                            <span class="activity-text">Built prompt pack — 7 files, 50 scene prompts</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">19:30</span>
+                            <span class="activity-icon">🎥</span>
+                            <span class="activity-text">Assembled consciousness video — 5:43, 13 images</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">17:00</span>
+                            <span class="activity-icon">🖼️</span>
+                            <span class="activity-text">Generated 13 ChatGPT images (Kurzgesagt style)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Revenue Chart -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>💰 Revenue</h2>
+                        <select class="panel-select">
+                            <option>This Month</option>
+                            <option>Last 7 Days</option>
+                            <option>All Time</option>
+                        </select>
+                    </div>
+                    <div class="chart-area">
+                        <canvas id="revenueChart"></canvas>
+                        <div class="chart-placeholder">
+                            <div class="mini-bar-chart">
+                                <div class="mini-bar" style="height: 20%"><span>W1</span></div>
+                                <div class="mini-bar" style="height: 35%"><span>W2</span></div>
+                                <div class="mini-bar" style="height: 15%"><span>W3</span></div>
+                                <div class="mini-bar accent" style="height: 55%"><span>W4</span></div>
+                            </div>
+                            <div class="chart-summary">
+                                <div class="chart-row"><span>Gumroad</span><span>$0</span></div>
+                                <div class="chart-row"><span>YouTube AdSense</span><span>$0</span></div>
+                                <div class="chart-row"><span>Consulting</span><span>$0</span></div>
+                                <div class="chart-row total"><span>Total</span><span>$0</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- YouTube Analytics -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>📺 Theoretika</h2>
+                        <span class="panel-badge">YouTube</span>
+                    </div>
+                    <div class="yt-stats">
+                        <div class="yt-stat-row">
+                            <span class="yt-label">Videos</span>
+                            <span class="yt-value">8</span>
+                        </div>
+                        <div class="yt-stat-row">
+                            <span class="yt-label">Shorts</span>
+                            <span class="yt-value">26</span>
+                        </div>
+                        <div class="yt-stat-row">
+                            <span class="yt-label">Total Views</span>
+                            <span class="yt-value">1,247</span>
+                        </div>
+                        <div class="yt-stat-row">
+                            <span class="yt-label">Watch Time (hrs)</span>
+                            <span class="yt-value">38.2</span>
+                        </div>
+                        <div class="yt-stat-row">
+                            <span class="yt-label">Subscribers</span>
+                            <span class="yt-value">42</span>
+                        </div>
+                        <div class="yt-stat-row">
+                            <span class="yt-label">Est. RPM</span>
+                            <span class="yt-value">$9-14</span>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <span class="status-dot green"></span> Next Short scheduled
+                    </div>
+                </div>
+
+                <!-- Tasks -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>🎯 Tasks</h2>
+                        <button class="panel-action" onclick="addTask()">+ Add</button>
+                    </div>
+                    <div class="task-list" id="taskList">
+                        <div class="task-item done">
+                            <input type="checkbox" checked>
+                            <span>Consciousness video v2</span>
+                        </div>
+                        <div class="task-item done">
+                            <input type="checkbox" checked>
+                            <span>Download YT Audio Library tracks</span>
+                        </div>
+                        <div class="task-item done">
+                            <input type="checkbox" checked>
+                            <span>Kurzgesagt Prompt Pack</span>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox">
+                            <span>Build EmpyreLab MVP</span>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox">
+                            <span>Theoretika Short #2</span>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox">
+                            <span>Gumroad payment setup</span>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox">
+                            <span>AI Video Factory product</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>🛒 Products</h2>
+                        <span class="panel-badge">Gumroad</span>
+                    </div>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">Kurzgesagt Prompt Pack</div>
+                                <div class="product-price">$9+</div>
+                            </div>
+                            <div class="product-status pending">⏳ Awaiting Payment Setup</div>
+                            <div class="product-meta">7 files • 15KB • Pay-what-you-want</div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">AI Video Factory</div>
+                                <div class="product-price">$49-79</div>
+                            </div>
+                            <div class="product-status building">🔨 Building</div>
+                            <div class="product-meta">Complete video production system</div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">Shorts Autopilot</div>
+                                <div class="product-price">$29-49</div>
+                            </div>
+                            <div class="product-status planned">📋 Planned</div>
+                            <div class="product-meta">Automated shorts pipeline</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trading -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>📈 Kalshi Trading</h2>
+                        <span class="panel-badge">Live</span>
+                    </div>
+                    <div class="trading-stats">
+                        <div class="trading-row">
+                            <span>Cash Balance</span>
+                            <span class="trading-value">$5.73</span>
+                        </div>
+                        <div class="trading-row">
+                            <span>Portfolio Value</span>
+                            <span class="trading-value">$4.86</span>
+                        </div>
+                        <div class="trading-row">
+                            <span>Total Trades</span>
+                            <span class="trading-value">7</span>
+                        </div>
+                        <div class="trading-row">
+                            <span>Win Rate</span>
+                            <span class="trading-value">57%</span>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <span class="status-dot yellow"></span> Weather scanner active
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
