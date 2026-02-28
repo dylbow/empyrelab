@@ -266,7 +266,121 @@ function scrollTo(selector) {
     document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
 }
 
+// ===== Focus Timer =====
+let timerInterval = null;
+let timerSeconds = 25 * 60;
+let timerRunning = false;
+let sessionCount = 0;
+
+function setTimer(minutes, el) {
+    if (timerRunning) return;
+    timerSeconds = minutes * 60;
+    updateTimerDisplay();
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    if (el) el.classList.add('active');
+}
+
+function startTimer() {
+    const btn = document.querySelector('.timer-btn:first-child');
+    if (timerRunning) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        btn.textContent = '▶ Start';
+        btn.classList.remove('running');
+        return;
+    }
+    timerRunning = true;
+    btn.textContent = '⏸ Pause';
+    btn.classList.add('running');
+    timerInterval = setInterval(() => {
+        timerSeconds--;
+        updateTimerDisplay();
+        if (timerSeconds <= 0) {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            btn.textContent = '▶ Start';
+            btn.classList.remove('running');
+            sessionCount++;
+            document.getElementById('sessionCount').textContent = sessionCount;
+            timerSeconds = 25 * 60;
+            updateTimerDisplay();
+            // Visual feedback
+            document.getElementById('timerMode').textContent = '✅ Done!';
+            setTimeout(() => { document.getElementById('timerMode').textContent = 'Work'; }, 3000);
+        }
+    }, 1000);
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    const active = document.querySelector('.preset-btn.active');
+    timerSeconds = active ? parseInt(active.textContent) * 60 : 25 * 60;
+    updateTimerDisplay();
+    const btn = document.querySelector('.timer-btn:first-child');
+    btn.textContent = '▶ Start';
+    btn.classList.remove('running');
+}
+
+function updateTimerDisplay() {
+    const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+    const s = (timerSeconds % 60).toString().padStart(2, '0');
+    const el = document.getElementById('timerDisplay');
+    if (el) el.textContent = `${m}:${s}`;
+}
+
+// ===== Quick Notes (localStorage) =====
+function loadNotes() {
+    const el = document.getElementById('quickNotes');
+    if (el) {
+        el.value = localStorage.getItem('empyrelab-notes') || '';
+        el.addEventListener('input', () => {
+            localStorage.setItem('empyrelab-notes', el.value);
+        });
+    }
+}
+
+function clearNotes() {
+    if (confirm('Clear all notes?')) {
+        document.getElementById('quickNotes').value = '';
+        localStorage.removeItem('empyrelab-notes');
+    }
+}
+
+// ===== Habits =====
+function addHabit() {
+    const name = prompt('Habit name:');
+    if (!name) return;
+    const list = document.getElementById('habitList');
+    const item = document.createElement('div');
+    item.className = 'habit-item';
+    item.innerHTML = `
+        <div class="habit-info">
+            <span class="habit-name">${name}</span>
+            <span class="habit-streak">New habit!</span>
+        </div>
+        <div class="habit-days">
+            <span class="habit-day">M</span>
+            <span class="habit-day">T</span>
+            <span class="habit-day">W</span>
+            <span class="habit-day">T</span>
+            <span class="habit-day">F</span>
+            <span class="habit-day">S</span>
+            <span class="habit-day today">S</span>
+        </div>
+    `;
+    list.appendChild(item);
+}
+
+// Toggle habit days on click
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('habit-day')) {
+        e.target.classList.toggle('done');
+    }
+});
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.hash === '#dashboard') showDashboard();
+    loadNotes();
 });

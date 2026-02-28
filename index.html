@@ -461,10 +461,119 @@
                 </div>
             </div>
 
+            <!-- Row 3: Focus Timer + Notes + Habits -->
+            <div class="panel-grid panel-grid-3">
+                <!-- Focus Timer -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>🍅 Focus Timer</h2>
+                        <span class="panel-badge" id="timerMode">Work</span>
+                    </div>
+                    <div class="timer-widget">
+                        <div class="timer-display" id="timerDisplay">25:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn" onclick="startTimer()">▶ Start</button>
+                            <button class="timer-btn secondary" onclick="resetTimer()">↺ Reset</button>
+                        </div>
+                        <div class="timer-presets">
+                            <button class="preset-btn active" onclick="setTimer(25, this)">25m</button>
+                            <button class="preset-btn" onclick="setTimer(15, this)">15m</button>
+                            <button class="preset-btn" onclick="setTimer(5, this)">5m</button>
+                            <button class="preset-btn" onclick="setTimer(50, this)">50m</button>
+                        </div>
+                        <div class="timer-stats">
+                            <span>Sessions today: <strong id="sessionCount">0</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Notes -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>📝 Quick Notes</h2>
+                        <button class="panel-action" onclick="clearNotes()">Clear</button>
+                    </div>
+                    <div class="notes-widget">
+                        <textarea id="quickNotes" class="notes-textarea" placeholder="Type anything... ideas, thoughts, quick notes...&#10;&#10;Your notes are saved locally."></textarea>
+                    </div>
+                </div>
+
+                <!-- Habit Tracker -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>🔥 Habits</h2>
+                        <button class="panel-action" onclick="addHabit()">+ Add</button>
+                    </div>
+                    <div class="habit-list" id="habitList">
+                        <div class="habit-item">
+                            <div class="habit-info">
+                                <span class="habit-name">Exercise</span>
+                                <span class="habit-streak">🔥 3 day streak</span>
+                            </div>
+                            <div class="habit-days">
+                                <span class="habit-day done">M</span>
+                                <span class="habit-day done">T</span>
+                                <span class="habit-day done">W</span>
+                                <span class="habit-day">T</span>
+                                <span class="habit-day">F</span>
+                                <span class="habit-day">S</span>
+                                <span class="habit-day today">S</span>
+                            </div>
+                        </div>
+                        <div class="habit-item">
+                            <div class="habit-info">
+                                <span class="habit-name">Read 30 min</span>
+                                <span class="habit-streak">🔥 5 day streak</span>
+                            </div>
+                            <div class="habit-days">
+                                <span class="habit-day done">M</span>
+                                <span class="habit-day done">T</span>
+                                <span class="habit-day done">W</span>
+                                <span class="habit-day done">T</span>
+                                <span class="habit-day done">F</span>
+                                <span class="habit-day">S</span>
+                                <span class="habit-day today">S</span>
+                            </div>
+                        </div>
+                        <div class="habit-item">
+                            <div class="habit-info">
+                                <span class="habit-name">No doomscrolling</span>
+                                <span class="habit-streak">🔥 1 day streak</span>
+                            </div>
+                            <div class="habit-days">
+                                <span class="habit-day">M</span>
+                                <span class="habit-day">T</span>
+                                <span class="habit-day done">W</span>
+                                <span class="habit-day">T</span>
+                                <span class="habit-day done">F</span>
+                                <span class="habit-day">S</span>
+                                <span class="habit-day today">S</span>
+                            </div>
+                        </div>
+                        <div class="habit-item">
+                            <div class="habit-info">
+                                <span class="habit-name">Ship something</span>
+                                <span class="habit-streak">🔥 2 day streak</span>
+                            </div>
+                            <div class="habit-days">
+                                <span class="habit-day">M</span>
+                                <span class="habit-day">T</span>
+                                <span class="habit-day">W</span>
+                                <span class="habit-day">T</span>
+                                <span class="habit-day done">F</span>
+                                <span class="habit-day done">S</span>
+                                <span class="habit-day today">S</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Quick Actions -->
             <div class="quick-actions">
                 <button class="quick-btn" onclick="addLifeTask()">✅ New Task</button>
                 <button class="quick-btn" onclick="addReminder()">⏰ Reminder</button>
+                <button class="quick-btn" onclick="startTimer()">🍅 Focus</button>
                 <button class="quick-btn" onclick="document.getElementById('aiSearchInput').focus()">🤖 Ask AI</button>
                 <button class="quick-btn" onclick="switchTab('business')">📊 Business</button>
             </div>
